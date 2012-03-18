@@ -1,0 +1,145 @@
+@font-face {
+    font-family: 'Icons';
+    src: url('css/fonts/heydings_icons-webfont.eot');
+    src: url('css/fonts/heydings_icons-webfont.eot?#iefix') format('embedded-opentype'),
+         url('css/fonts/heydings_icons-webfont.woff') format('woff'),
+         url('css/fonts/heydings_icons-webfont.ttf') format('truetype'),
+         url('css/fonts/heydings_icons-webfont.svg#HeydingsCommonIconsRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+#left {
+	width:25%;
+	float:left;
+}
+#right {
+	width:70%;
+	float:right;
+	border:1px solid blue;
+}
+
+.number {
+	background-color: #aaa;
+	border-radius:35px;
+	width:30px;
+	text-align:center;
+}
+[contenteditable="true"]:focus { 
+	outline: 2px dashed #0090D2; 
+}
+body {  
+    /*margin: 35px auto;  
+    width: 640px;  */
+    background-color:#ccc;
+}  
+  
+header {  
+    text-align: center;  
+    margin: 0 0 20px;  
+}  
+  
+header h1 {  
+    display: inline;  
+    font-size: 32px;  
+}  
+  
+header h1 a:link, header h1 a:visited {  
+    color: #444;  
+    text-decoration: none;  
+}  
+  
+header h2 {  
+    font-size: 16px;  
+    font-style: italic;  
+    color: #999;  
+}  
+  
+#main {  
+    margin: 0 0 20px;  
+}  
+  
+#add {  
+    margin: 0 0 20px;  
+}  
+  
+#add textarea {  
+    height: 30px;  
+    width: 510px;  
+    padding: 10px;  
+    border: 1px solid #ddd;  
+}  
+  
+#add input {  
+    height: 50px;  
+    width: 100px;  
+    margin: -50px 0 0;  
+    border: 1px solid #ddd;  
+    background: white;  
+}  
+  
+#edit textarea {  
+    height: 30px;  
+    width: 480px;  
+    padding: 10px;  
+    border: 1px solid #ddd;  
+}  
+  
+#right input[type=submit] {  
+   /* height: 50px;  
+    width: 100px;  
+    margin: -50px 0 0;  */
+    font-family: "Icons";
+    border: 1px solid #ddd;  
+    background: red;  
+}  
+  
+#edit input[type=checkbox] {  
+    height: 50px;  
+    width: 20px;  
+}  
+  
+article {  
+    border: 1px solid #eee;  
+    border-top: none;  
+    padding: 15px 10px;  
+}  
+  
+article:first-of-type {  
+    border: 1px solid #eee;  
+}  
+  
+article:nth-child(7) {  
+    background: #fff;  
+}  
+  
+article.complete {  
+    background: #fedae3;  
+}  
+  
+article span {  
+    font-size: 0.8em;  
+}  
+  
+p {  
+    margin: 0 0 5px;  
+}  
+  
+.meta {  
+    font-size: 0.8em;  
+    font-style: italic;  
+    color: #888;  
+}  
+  
+.links {  
+    font-size: 1.8em;  
+    line-height: 0.8em;  
+    float: rightright;  
+    margin: -10px 0 0;  
+}  
+  
+.links a {  
+    display: block;  
+    text-decoration: none;  
+}  
+
