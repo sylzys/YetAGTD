@@ -7,7 +7,8 @@
   </form>  
 </section>  --> 
   
- <%= @notes.length %>
+<div id="left"> 
+<p class="number"><%= @notes.length %></p>
 <% @notes.each do |note| %>  
   <article >  
     <p>  
@@ -21,23 +22,27 @@
     <p class="meta">Created: <%= note.created_at %></p>  
   </article>  
 <% end %>  
+</div>
 <div id = "right">
-<form action="edit" method="post">
-<input name="_method" value="put" type="hidden"/>
+<!-- <form action="edit" method="post">
+<input name="_method" value="put" type="hidden"/> -->
 <% if @id %>
-
 	<% edited = Note.get @id %>
-		display id <%= edited.id %>
-	<input type="hidden" name="id" value="<%= edited.id %>" >
-	<input type="text" name="title" value="<%= edited.title %>"><br>
-	<textarea name="content"><%= edited.content %></textarea>
 <% else %>
-display else <%= @notes.first.id %>
-	<input type="hidden" name="id" value="<%= @notes.first.id %>" >
-	<input type="text" name="title" value="<%= @notes.first.title %>"><br>
-	<textarea name="content" ><%= @notes.first.content %></textarea>
+	<% edited = @notes.first %>	
 <% end %>
+		<div id="edit_title" contenteditable="true">
+			<%= edited.title %>
+		</div>
+		<div id="edit_content" contenteditable="true">
+			<%= edited.content %>
+		</div>
+	<!-- <input type="hidden" name="id" value="<%= edited.id %>" >
+	<input type="text" name="title" value="<%= edited.title %>"><br>
+	<textarea name="content"><%= edited.content %></textarea> -->
 
-<input type="submit" id="edit" name="edit">
-</form>
+
+<button id="edit" name="<%= edited.id %>" value="Editer">Editer</button>
+<button id="delete" name="<%= edited.id %>" value="Supprimer">Supprimer</button>
+<!-- </form> -->
 </div>
