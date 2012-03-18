@@ -1,0 +1,43 @@
+<!-- <section id="add">  
+  <form action="/" method="post">  
+  	<label for"title">Titre</label>
+ 	<input type="text" name="title">
+    <textarea name="content" placeholder="Your note&hellip;"></textarea>  
+    <input type="submit" value="Take Note!">  
+  </form>  
+</section>  --> 
+  
+ <%= @notes.length %>
+<% @notes.each do |note| %>  
+  <article >  
+    <p>  
+    	<span><a href="/<%= note.id %>"><%= note.title %></a></span>  
+    <!--   <%= note.content %>  -->
+      
+    </p>  
+    <p class="links">  
+     <!--  <a href="/<%= note.id %>/complete">&#8623;</a>   -->
+    </p>  
+    <p class="meta">Created: <%= note.created_at %></p>  
+  </article>  
+<% end %>  
+<div id = "right">
+<form action="edit" method="post">
+<input name="_method" value="put" type="hidden"/>
+<% if @id %>
+
+	<% edited = Note.get @id %>
+		display id <%= edited.id %>
+	<input type="hidden" name="id" value="<%= edited.id %>" >
+	<input type="text" name="title" value="<%= edited.title %>"><br>
+	<textarea name="content"><%= edited.content %></textarea>
+<% else %>
+display else <%= @notes.first.id %>
+	<input type="hidden" name="id" value="<%= @notes.first.id %>" >
+	<input type="text" name="title" value="<%= @notes.first.title %>"><br>
+	<textarea name="content" ><%= @notes.first.content %></textarea>
+<% end %>
+
+<input type="submit" id="edit" name="edit">
+</form>
+</div>
