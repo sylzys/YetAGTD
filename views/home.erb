@@ -6,43 +6,53 @@
     <input type="submit" value="Take Note!">  
   </form>  
 </section>  --> 
-  
+
 <div id="left"> 
-<p class="number"><%= @notes.length %></p>
+	<select id="tri" name= "tri" class="chzn-select">
+	<option value="1">Note par date de creation</option>
+	<option value="2">Note par date de modification</option>
+	<option value="3">Note par titre</option>
+</select><br>
+<span class="number"><%= @notes.length %></span>&nbsp;&nbsp;&nbsp;
+<span><a href="new">Nouvelle note</a></span> 
+<%= @toto %>
+<%if !@notes.empty? %>
 <% @notes.each do |note| %>  
-  <article >  
-    <p>  
-    	<span><a href="/<%= note.id %>"><%= note.title %></a></span>  
-    <!--   <%= note.content %>  -->
-      
-    </p>  
-    <p class="links">  
-     <!--  <a href="/<%= note.id %>/complete">&#8623;</a>   -->
-    </p>  
-    <p class="meta">Created: <%= note.created_at %></p>  
-  </article>  
-<% end %>  
+
+  	<article >  
+    <p class="links">  	
+    	<div id ="<%= note.id %>">
+    	<a href="/<%= note.id %>"><%= note.title %></a>
+      </div>
+    </p> 
+    <p class="meta">Created: <%= note.created_at.strftime("%d/%m/%Y %H:%M:%S") %></p>  
+  </article>
+<% end %> 
 </div>
 <div id = "right">
-<!-- <form action="edit" method="post">
-<input name="_method" value="put" type="hidden"/> -->
-<% if @id %>
-	<% edited = Note.get @id %>
+	<% if @create == "y" %>
+	<% edited = Note.new %>
+	<% edited.title ="" %>
+	<% edited.content = "" %>
+	<% elsif @id %>
+		<% edited = Note.get @id %>
+	<% else %>
+		<% edited = @notes.first %>	
+	<% end %>
+	<% if @create == "y" %>
+<button id="create" name="<%= edited.id %>" value="Creer"><img src="img/Checked.png" width="32" height="32" alt="Creer"></button>
 <% else %>
-	<% edited = @notes.first %>	
-<% end %>
+<button id="edit" name="<%= edited.id %>" value="Editer"><img src="img/Checked.png" width="32" height="32" alt="Valider"></button>
+<button id="delete" name="<%= edited.id %>" value="Supprimer"><img src="img/Delete.png" width="32" height="32" alt="Supprimer"></button><br>
+<% end %><br>
+		Titre :
 		<div id="edit_title" contenteditable="true">
-			<%= edited.title %>
-		</div>
+			 <%= edited.title %>
+		</div><br>
 		<div id="edit_content" contenteditable="true">
 			<%= edited.content %>
 		</div>
-	<!-- <input type="hidden" name="id" value="<%= edited.id %>" >
-	<input type="text" name="title" value="<%= edited.title %>"><br>
-	<textarea name="content"><%= edited.content %></textarea> -->
 
-
-<button id="edit" name="<%= edited.id %>" value="Editer">Editer</button>
-<button id="delete" name="<%= edited.id %>" value="Supprimer">Supprimer</button>
 <!-- </form> -->
 </div>
+<% end %>

@@ -155,7 +155,7 @@ article {
     border: 1px solid #eee;  
     border-top: none;  
     padding: 15px 10px;
-    background-image(linear-gradient(rgb(249, 249, 249), darken(rgb(249, 249, 249), 8%);
+    /*background-image(linear-gradient(rgb(249, 249, 249), darken(rgb(249, 249, 249), 8%);*/
     	/* gecko based browsers */
 background: -moz-linear-gradient(top, rgb(249, 249, 249), rgb(229, 229, 229));
 
@@ -168,20 +168,15 @@ article:first-of-type {
     border: 1px solid #eee;  
 }  
   
-article:nth-child(even) {  
-  /*  background: -moz-linear-gradient(top, rgb(0, 102, 204), rgb(0, 102, 255));
-
-/* webkit based browsers */
-/*background: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 102, 204)), to(rgb(0, 102, 255))); */
+article:nth-child(0) {  
+    background-color: red;  
 }  
   
-/*article {
-    background-color: red;
-}*/
-/*article span {  
+
+article span {  
     font-size: 0.8em;  
 }  
-  */
+  
 p {  
     margin: 0 0 5px;  
 }  

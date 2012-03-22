@@ -1,13 +1,16 @@
 (function($) {
  $('#edit').click(function(event) {
+
             var iD = $(this).attr('name');
             $.ajax({
                 url:  '/edit',
-                data: { id: iD, title: $('#edit_title').html(), content: $('#edit_content').html() },
+                data: { id: iD, title: $('#edit_title').text(), content: $('#edit_content').text() },
                 type:       'POST',
                 dataType:   'html',
                 success: function(data) {
-                window.location.href = "/"+iD
+                // window.location.href = "/"+iD
+                $('#'+iD).html('<a href="/'+iD+'">'+$('#edit_title').text());
+                $('#edit_title').blur();
                 },
                 error : function(data){
                     //alert(data.responseText);
@@ -28,6 +31,35 @@
                     //alert(data.responseText);
                 }
             });
+        }); 
+  $('#create').click(function(event) {
+            $.ajax({
+                url:  '/',
+                data: { title: $('#edit_title').text(), content: $('#edit_content').text() },
+                type:       'POST',
+                dataType:   'html',
+                success: function(data) {
+                window.location.href = "/"
+                },
+                error : function(data){
+                    //alert(data.responseText);
+                }
+            });
+        }); 
+  $('#tri').change(function(event) {
+    // alert ($('#tri').val())
+            // $.ajax({
+            //     url:  '/tri',
+            //     data: { tri:  $('#tri').val() },
+            //     type:       'get',
+            //     dataType:   'html',
+            //     success: function(data) {
+                window.location.href = "?tri="+$('#tri').val();
+            //     },
+            //     error : function(data){
+            //         //alert(data.responseText);
+            //     }
+            // });
         }); 
   // MAIN
   $(function() {

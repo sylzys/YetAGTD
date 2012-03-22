@@ -1,0 +1,25 @@
+@import "compass/css3/font-face";
+
+@include font-face(
+  'Icons',
+  font-files('heydings_icons-webfont.woff', woff,
+             'heydings_icons-webfont.ttf', truetype,
+             'heydings_icons-webfont.svg', svg),
+  'heydings_icons-webfont.eot'
+);
+
+@include font-face(
+  'Colaborate',
+  font-files('ColabReg-webfont.woff', woff,
+             'ColabReg-webfont.ttf', truetype,
+             'ColabReg-webfont.svg', svg),
+  'ColabReg-webfont.eot'
+);
+
+@include font-face(
+  'ColaborateThin',
+  font-files('ColabThi-webfont.woff', woff,
+             'ColabThi-webfont.ttf', truetype,
+             'ColabThi-webfont.svg', svg),
+  'ColabThi-webfont.eot'
+);

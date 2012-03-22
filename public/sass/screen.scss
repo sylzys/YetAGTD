@@ -1,0 +1,155 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "fonts";
+@import "compass/reset";
+
+@import "base";
+
+body {
+  font-size: $rem;
+  font-family: 'ColaborateThin', sans-serif;
+  background-color: darken($light_grey, 8%);
+}
+
+#container {
+  width: 100%;
+  padding: 20px 0;
+  @include clearfix;
+  @include gradient;
+}
+
+section {
+  width: percentage($section / $container);
+  margin: $margin;
+  @include float-left;
+}
+
+form[name="search"] {
+  font-size: 1px;
+
+  input {
+    @include inline-block;
+    @include box-sizing(border-box);
+    padding: 0 0.8em;
+    height: 2em;
+    /* borders */
+    @include border;
+    border-top-color: darken($grey, 15%);
+    /* shadows */
+    @include drop-shadow;
+  }
+  input[name="s"] {
+    width: percentage(($section - 32) / $section);
+  }
+  input[type="submit"]{
+    width: percentage(32 / $section);
+    border: {
+      radius: 0 $radius $radius 0;
+      left-width: 0;
+    }
+    @include gradient;
+    font-family: Icons;
+  }
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+#list ul {
+  margin-top: 2em;
+  @include border;
+
+  li + li {
+    border-top: 1px solid $grey;
+  }
+
+  li {
+    @include clearfix;
+    @include box-sizing(border-box);
+    @include gradient;
+
+    figure {
+      width: percentage(64/458);
+      float: left;
+      margin-right: percentage(10/458);
+    }
+
+    h1 {
+      font-family: Colaborate;
+      line-height: 1.38em;
+    }
+
+    dl {
+      font-size: 1px;
+    }
+    dt, dd {
+      @include inline-block;
+      font-size: 0.9 * $rem;
+      line-height: 1em;
+    }
+    dt {
+      width: percentage(120/458);
+    }
+    dd {
+      width: percentage(264/458);
+    }
+  }
+}
+
+#view {
+  @include border;
+  @include box-sizing(border-box);
+  padding: percentage(5/458);
+  background-color: $light_grey;
+
+  figure {
+    width: percentage(128/458);
+    margin-right: percentage(10/458);
+  }
+
+  figure, header {
+      @include float-left;
+  }
+
+  h1 {
+    font-size: 2em;
+    font-family: Colaborate;
+  }
+  .compagny {
+    font-size: 1.4em;
+    color: $grey;
+  }
+
+  .info {
+    clear: both;
+    padding-top: 20px;
+  }
+
+  ul {
+    display: table;
+    width: 100%;
+    margin-bottom: 1em;
+    @include border;
+
+    li {
+      display: table-row;
+    }
+  }
+  .dt, .dd {
+    display: table-cell;
+    padding: 0.3em;
+  }
+  .dt {
+    width: 30%;
+    border-right: 1px solid $grey;
+    @include gradient;
+  }
+  .dd {
+    width: 70%;
+  }
+}
