@@ -2,6 +2,8 @@
  $('#edit').click(function(event) {
 
             var iD = $(this).attr('name');
+            alert ($('#edit_title').text())
+            $('#'+iD).html('<a href="/'+iD+'">'+$('#edit_title').text());
             $.ajax({
                 url:  '/edit',
                 data: { id: iD, title: $('#edit_title').text(), content: $('#edit_content').text() },
@@ -10,10 +12,9 @@
                 success: function(data) {
                 // window.location.href = "/"+iD
                 $('#'+iD).html('<a href="/'+iD+'">'+$('#edit_title').text());
-                $('#edit_title').blur();
                 },
                 error : function(data){
-                    //alert(data.responseText);
+                    alert(data.responseText);
                 }
             });
         }); 

@@ -13,46 +13,48 @@
 	<option value="2">Note par date de modification</option>
 	<option value="3">Note par titre</option>
 </select><br>
-<span class="number"><%= @notes.length %></span>&nbsp;&nbsp;&nbsp;
-<span><a href="new">Nouvelle note</a></span> 
-<%= @toto %>
-<%if !@notes.empty? %>
-<% @notes.each do |note| %>  
-
-  	<article >  
+ <span><a href="new">Nouvelle note</a></span> 
+ 
+ <% @notes.each do |note| %>  
+ 	<article >  
     <p class="links">  	
-    	<div id ="<%= note.id %>">
-    	<a href="/<%= note.id %>"><%= note.title %></a>
+    	<div id ="<%= note['id'] %>">
+    	<a href="/?id=<%= note['id'] %>&tri=<%= @tri %>"><%= note['title']%></a>
       </div>
     </p> 
-    <p class="meta">Created: <%= note.created_at.strftime("%d/%m/%Y %H:%M:%S") %></p>  
+    <p class="meta">Created: <%= note['created_at'] %></p>  
   </article>
-<% end %> 
+ <% end %>
+  
 </div>
 <div id = "right">
-	<% if @create == "y" %>
-	<% edited = Note.new %>
-	<% edited.title ="" %>
-	<% edited.content = "" %>
-	<% elsif @id %>
-		<% edited = Note.get @id %>
-	<% else %>
-		<% edited = @notes.first %>	
-	<% end %>
-	<% if @create == "y" %>
-<button id="create" name="<%= edited.id %>" value="Creer"><img src="img/Checked.png" width="32" height="32" alt="Creer"></button>
-<% else %>
-<button id="edit" name="<%= edited.id %>" value="Editer"><img src="img/Checked.png" width="32" height="32" alt="Valider"></button>
-<button id="delete" name="<%= edited.id %>" value="Supprimer"><img src="img/Delete.png" width="32" height="32" alt="Supprimer"></button><br>
-<% end %><br>
-		Titre :
-		<div id="edit_title" contenteditable="true">
-			 <%= edited.title %>
-		</div><br>
-		<div id="edit_content" contenteditable="true">
-			<%= edited.content %>
-		</div>
 
-<!-- </form> -->
-</div>
+  <% if @create == "y" %>
+<button id="create" value="Creer"><img src="img/Checked.png" width="32" height="32" alt="Creer"></button>
+<% one = {
+  'title'     => '',
+  'content'  => '',
+} %>
+<br>
+    Titre :
+    <div id="edit_title" contenteditable="true">
+       <%= one['title'] %>
+    </div><br>
+    <div id="edit_content" contenteditable="true">
+      <%= one['content'] %>
+    </div>
+<% else %> 
+<% @one_note.each do |one| %> 
+<button id="edit" name="<%= one['id'] %>" value="Editer"><img src="img/Checked.png" width="32" height="32" alt="Valider"></button>
+<button id="delete" name="<%= one['id'] %>" value="Supprimer"><img src="img/Delete.png" width="32" height="32" alt="Supprimer"></button><br>
+
+    <br>
+    Titre :
+    <div id="edit_title" contenteditable="true">
+       <%= one['title'] %>
+    </div><br>
+    <div id="edit_content" contenteditable="true">
+      <%= one['content'] %>
+    </div>
+<% end %>
 <% end %>
