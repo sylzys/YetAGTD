@@ -15,46 +15,15 @@
 </select><br>
  <span><a href="new">Nouvelle note</a></span> 
  
- <% @notes.each do |note| %>  
- 	<article >  
-    <p class="links">  	
-    	<div id ="<%= note['id'] %>">
-    	<a href="/?id=<%= note['id'] %>&tri=<%= @tri %>"><%= note['title']%></a>
+ 
+  <ol id="documents-list">
+        <li data-template><article >  
+    <p class="links">   
+      <div id ="{{ id }}">
+      <a href="/?id{{ id }}&tri={{ tri }}"><{{ title }}></a>
       </div>
     </p> 
-    <p class="meta">Created: <%= note['created_at'] %></p>  
-  </article>
- <% end %>
-  
+    <p class="meta">Created: {{ created_at }}</p>  
+  </article></li>
+    </ol>
 </div>
-<div id = "right">
-
-  <% if @create == "y" %>
-<button id="create" value="Creer"><img src="img/Checked.png" width="32" height="32" alt="Creer"></button>
-<% one = {
-  'title'     => '',
-  'content'  => '',
-} %>
-<br>
-    Titre :
-    <div id="edit_title" contenteditable="true">
-       <%= one['title'] %>
-    </div><br>
-    <div id="edit_content" contenteditable="true">
-      <%= one['content'] %>
-    </div>
-<% else %> 
-<% @one_note.each do |one| %> 
-<button id="edit" name="<%= one['id'] %>" value="Editer"><img src="img/Checked.png" width="32" height="32" alt="Valider"></button>
-<button id="delete" name="<%= one['id'] %>" value="Supprimer"><img src="img/Delete.png" width="32" height="32" alt="Supprimer"></button><br>
-
-    <br>
-    Titre :
-    <div id="edit_title" contenteditable="true">
-       <%= one['title'] %>
-    </div><br>
-    <div id="edit_content" contenteditable="true">
-      <%= one['content'] %>
-    </div>
-<% end %>
-<% end %>
