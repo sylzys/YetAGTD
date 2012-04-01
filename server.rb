@@ -12,7 +12,7 @@ db =   SQLite3::Database.new( "db/mytasks.sqlite3" )
 db.results_as_hash = true #result in array
 
 #display all notes
-get '/' do 
+get '/*' do 
   @tri = params[:tri].to_i
   case params[:tri].to_i
      when 2
@@ -40,12 +40,14 @@ end
 
 
 # link to save note
-get '/new' do  
-  @notes = db.execute( "select * from notes" )
-  @title = 'My Notes'  
-  @create = "y"
+post '/hello' do  
+  # @notes = db.execute( "select * from notes" )
+  # @title = 'My Notes'  
+  # @create = "y"
  # binding.pry
-  erb :home  
+ jsonp "hello"
+ #erb :nopage, :layout => !request.xhr?
+
 end  
 
 #save new note

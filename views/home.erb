@@ -1,29 +1,24 @@
-<!-- <section id="add">  
-  <form action="/" method="post">  
-  	<label for"title">Titre</label>
- 	<input type="text" name="title">
-    <textarea name="content" placeholder="Your note&hellip;"></textarea>  
-    <input type="submit" value="Take Note!">  
-  </form>  
-</section>  --> 
+ <div id="main"></div>
 
-<div id="left"> 
-	<select id="tri" name= "tri" class="chzn-select">
-	<option value="1">Note par date de creation</option>
-	<option value="2">Note par date de modification</option>
-	<option value="3">Note par titre</option>
-</select><br>
- <span><a href="new">Nouvelle note</a></span> 
- 
- 
-  <ol id="documents-list">
-        <li data-template><article >  
-    <p class="links">   
-      <div id ="{{ id }}">
-      <a href="/?id{{ id }}&tri={{ tri }}"><{{ title }}></a>
-      </div>
-    </p> 
-    <p class="meta">Created: {{ created_at }}</p>  
-  </article></li>
+<div id="left">
+    <ol id="documents-list">
+      <a class="create" href="#">Nouvelle note</a><br>
+        <li data-template><div id="{{id}}"><article><p>
+         <a href="#/{{id}}"> {{title}}</a>&nbsp;&nbsp;<a href="#/del/{{id}}"><button>X</button></a></p>
+          <p> {{ created_at }}</p></article></div>
+        </li>
+    </ol>
+</div>
+<div id="right">
+  <ol id="sole_note">
+        <li data-template>
+         <a class="right_button_link" href="#/val/{{id}}"><button class="validate">Valider</button></a><br>Titre :
+    <div id="edit_title" contenteditable="true">
+       {{ title }}
+    </div><br>
+    <div id="edit_content" contenteditable="true">
+     {{ content }}
+    </div>
+        </li>
     </ol>
 </div>
