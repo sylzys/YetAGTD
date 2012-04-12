@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 require 'rubygems'
 require 'sinatra'
-bacbone
 require 'dm-core'
 require 'pry'
 require 'json'
